@@ -47,6 +47,10 @@ contract DOC_v05 {
     function getlast_useVersion() public view returns (string memory) {return last_useVersion;}
     function decimals() public view returns (uint8) {return _decimals;}
     //////////////////////////////////////// manager handle //////////////////////////////////////////
+    function update_name(string memory mname) public {
+        require(msg.sender == admin, "Admin only function");
+        _name = mname;
+    }
     function set_manager(address adr, string memory mname, uint8 mlevel) public returns (bool) {
         require(msg.sender == admin, "Admin only function");
         managerDetail memory isManager = Managers[adr];
